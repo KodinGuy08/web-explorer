@@ -23,8 +23,11 @@ def settings():
     vectorstore_public = FAISS(embeddings_model.embed_query, index, InMemoryDocstore({}), {})
 
     # LLM
-    from langchain.chat_models import ChatOpenAI
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k", temperature=0, streaming=True)
+    from langchain.llms import GooglePalm
+    llm = GooglePalm()
+
+    models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
+    model = models[0].name
 
     # Search
     from langchain.utilities import GoogleSearchAPIWrapper
