@@ -22,6 +22,10 @@ def settings():
     from langchain.llms import GooglePalm
     llm = GooglePalm()
 
+    import google.generativeai as palm
+    api_key = 'AIzaSyCeQNFXvDWT3mho492PZH3JRWrohm2PQTE' # put your API key here
+    palm.configure(api_key=api_key)
+
     models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
     model = models[0].name
 
