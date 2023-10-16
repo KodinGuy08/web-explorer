@@ -18,7 +18,7 @@ def settings():
     from langchain.embeddings import GooglePalmEmbeddings
     from langchain.llms import GooglePalm
     from langchain.docstore import InMemoryDocstore  
-    embeddings_model = GooglePaLMEmbeddings()  
+    embeddings_model = GooglePalmEmbeddings()  
     embedding_size = 1536  
     index = faiss.IndexFlatL2(embedding_size)  
     vectorstore_public = FAISS(embeddings_model.embed_query, index, InMemoryDocstore({}), {})
