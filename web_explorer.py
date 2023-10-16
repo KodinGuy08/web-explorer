@@ -16,11 +16,7 @@ def settings():
     import faiss
     from langchain.vectorstores import FAISS 
     from langchain.embeddings.openai import OpenAIEmbeddings
-    from langchain.docstore import InMemoryDocstore  
-    embeddings_model = OpenAIEmbeddings()  
-    embedding_size = 1536  
-    index = faiss.IndexFlatL2(embedding_size)  
-    vectorstore_public = FAISS(embeddings_model.embed_query, index, InMemoryDocstore({}), {})
+    from langchain.docstore import InMemoryDocstore
 
     # LLM
     from langchain.llms import GooglePalm
@@ -35,7 +31,6 @@ def settings():
 
     # Initialize 
     web_retriever = WebResearchRetriever.from_llm(
-        vectorstore=vectorstore_public,
         llm=llm, 
         search=search, 
         num_search_results=3
