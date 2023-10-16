@@ -15,7 +15,7 @@ def settings():
     # Vectorstore
     import faiss
     from langchain.vectorstores import FAISS 
-    from langchain.embeddings.openai import GooglePaLMEmbeddings
+    from langchain.embeddings import GooglePaLMEmbeddings
     from langchain.docstore import InMemoryDocstore  
     embeddings_model = GooglePaLMEmbeddings()  
     embedding_size = 1536  
